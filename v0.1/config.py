@@ -1,1 +1,1 @@
-db_folder = "dbs__debug"
+db_folder = "dbs__debug/"
