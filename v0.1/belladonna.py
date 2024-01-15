@@ -14,8 +14,9 @@ class belladonna:
 		self.db_path = db_path
 		self.db = self.db_path.split("/")[-1]
 		self.add = self.add_()
-		print(self.db)
-		print(self.db_path)
+		#DEBUG
+		#print(self.db)
+		#print(self.db_path)
 
 	class add_:
 		def database(self, database_name, outer_class):
@@ -24,18 +25,21 @@ class belladonna:
 				print("Database exists!")
 			else:
 				os.makedirs(database_dir, exist_ok=bypass_exist)
+				
 		def table(self, table_name, database_name, outer_class):
 			table_dir = f"{outer_class.db_folder}/{database_name}/{table_name}"
 			if os.path.exists(table_dir):
 				print("Table exists!")
 			else:
 				os.makedirs(table_dir, exist_ok=bypass_exist)
+				
 		def column(self, column_name, table_name, database_name, outer_class):
 			column_dir = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}"
 			if os.path.exists(column_dir):
 				print("Column exists!")
 			else:
 				os.makedirs(column_dir, exist_ok=bypass_exist)
+				
 		def object(self, object_name, column_name, table_name, database_name, outer_class):
 			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
 			if os.path.exists(object_file):
@@ -43,6 +47,7 @@ class belladonna:
 			else:
 				file_touch = open(object_file, 'x')
 				file_touch.close()
+				
 		def data(self, payload, object_name, column_name, table_name, database_name, outer_class):
 			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
 			with open(object_file, 'a+' ) as column_file:
@@ -59,6 +64,16 @@ class belladonna:
 				tables = os.listdir(database_dir)
 			for table in tables:
 				print(table)
+				
+		def table(self, table_name, database_name, outer_class):
+			table_dir = f"{outer_class.db_folder}/{database_name}/{table_name}"
+			if not os.path.exists(table_dir):
+				print("Table does not exist!")
+				return 1
+			else:
+				columns = os.listdir(table_dir)
+			for column in columns:
+				print(column)
 
 #example usage 
 if __name__ == "__main__":
