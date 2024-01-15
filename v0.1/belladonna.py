@@ -85,6 +85,16 @@ class belladonna:
 			for object_ in objects:
 				print(object_)
 
+		def object(self, object_name, column_name, table_name, database_name, outer_class):
+			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
+			if not os.path.exists(object_file):
+				print("Object does not exist!")
+				return 1
+			else:
+				with open(object_file, 'r') as object_file:
+					print(object_file.read())
+
+
 #example usage 
 if __name__ == "__main__":
 	db = belladonna("~/belladonna/dbs/test")
