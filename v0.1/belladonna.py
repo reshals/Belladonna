@@ -74,6 +74,16 @@ class belladonna:
 				columns = os.listdir(table_dir)
 			for column in columns:
 				print(column)
+				
+		def column(self, column_name, table_name, database_name, outer_class):
+			column_dir = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}"
+			if not os.path.exists(column_dir):
+				print("Column does not exist!")
+				return 1
+			else:
+				objects = os.listdir(column_dir)
+			for object_ in objects:
+				print(object_)
 
 #example usage 
 if __name__ == "__main__":
