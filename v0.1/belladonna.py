@@ -48,9 +48,26 @@ class belladonna:
 			with open(object_file, 'a+' ) as column_file:
 				column_file.writelines(f"{payload}\n")
 
-teste = belladonna(f"{db_folder}/teste")
-teste.add.database("teste", teste)
-teste.add.table("teste_table", "teste", teste)
-teste.add.column("teste_column", "teste_table", "teste", teste)
-teste.add.object("teste_object", "teste_column", "teste_table", "teste", teste)
-teste.add.data("super duper cool payload", "teste_object", "teste_column", "teste_table", "teste", teste)
+	class read_:
+		def database(self, database_name, outer_class):
+			print("teste2")
+			database_dir = f"{outer_class.db_folder}/{database_name}"
+			if not os.path.exists(database_dir):
+				print("Database does not exist!")
+			else:
+				print("teste3")
+				tables = os.listdir(database_dir)
+			for table in tables:
+				print(table)
+
+#example usage 
+if __name__ == "__main__":
+	db = belladonna("~/belladonna/dbs/test")
+	
+	db.add.database("test", db)
+	db.add.table("test_table", "teste", db)
+	db.add.column("test_column", "test_table", "test", db)
+	db.add.object("test_object", "test_column", "test_table", "test", db)
+	db.add.data("super duper cool payload", "test_object", "test_column", "test_table", "test", db)
+	
+	db.read.database("test", db)
