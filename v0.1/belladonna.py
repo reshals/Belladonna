@@ -94,6 +94,16 @@ class belladonna:
 				with open(object_file, 'r') as object_file:
 					print(object_file.read())
 
+	class retrieve_:
+		def database(self, database_name, outer_class):
+			database_dir = f"{outer_class.db_folder}/{database_name}"
+			if not os.path.exists(database_dir):
+				print("Database does not exist!")
+				return 1
+			else:
+				tables = os.listdir(database_dir)
+			return tables
+
 
 #example usage 
 if __name__ == "__main__":
