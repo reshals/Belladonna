@@ -104,6 +104,15 @@ class belladonna:
 				tables = os.listdir(database_dir)
 			return tables
 
+		def table(self, table_name, database_name, outer_class):
+			table_dir = f"{outer_class.db_folder}/{database_name}/{table_name}"
+			if not os.path.exists(table_dir):
+				print("Table does not exist!")
+				return 1
+			else:
+				columns = os.listdir(table_dir)
+			return columns
+
 
 #example usage 
 if __name__ == "__main__":
