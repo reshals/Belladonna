@@ -209,6 +209,22 @@ class belladonna:
 			if(no_result): return 1
 			else: return return_
 
+		def data_at(self, data, object_path, outer_class):
+			#search_entry = f"{outer_class.db_folder}".split("\n")[0]
+			no_result = True
+			return_ = []
+			if(object_path.is_file()):
+				with open(object_path, 'r') as object_file:
+					for line in object_file.readlines():
+						if data in line:
+							no_result = False
+							#print(line)
+							return_.append(line)
+							print("debug successfull")
+			else: return 1
+			if(no_result): return 1
+			else: return return_
+
 
 #example usage 
 if __name__ == "__main__":
