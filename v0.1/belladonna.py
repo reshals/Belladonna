@@ -200,6 +200,28 @@ class belladonna:
 									return_.append(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}/{dir_column.name}/{dir_object.name}")
 			if(no_result): return 1
 			else: return return_
+				
+		def data(self, data, outer_class):
+			search_entry = f"{outer_class.db_folder}".split("\n")[0]
+			no_result = True
+			return_ = []
+			for dir_db in os.scandir(search_entry):
+				#print(dir_db.name)
+				for dir_table in os.scandir(f"{search_entry}/{dir_db.name}"):
+					#print(dir_table.name)
+					for dir_column in os.scandir(f"{search_entry}/{dir_db.name}/{dir_table.name}"):
+						#print(dir_column.name)
+						for dir_object in os.scandir(f"{search_entry}/{dir_db.name}/{dir_table.name}/{dir_column.name}"):
+							if(dir_object.is_file()):
+								with open(f"{search_entry}/{dir_db.name}/{dir_table.name}/{dir_column.name}/{dir_object.name}", 'r') as object_file:
+									for line in object_file.readlines():
+										if data in line:
+											no_result = False
+											#print(line)
+											return_.append(line)
+			if(no_result): return 1
+			else: return return_
+
 
 #example usage 
 if __name__ == "__main__":
