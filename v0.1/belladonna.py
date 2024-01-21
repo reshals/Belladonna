@@ -182,6 +182,25 @@ class belladonna:
 			if(no_result): return 1
 			else: return return_
 
+		def object(self, object_name, outer_class):
+			search_entry = f"{outer_class.db_folder}".split("\n")[0]
+			no_result = True
+			return_ = []
+			for dir_db in os.scandir(search_entry):
+				#print(dir_db.name)
+				for dir_table in os.scandir(f"{search_entry}/{dir_db.name}"):
+					#print(dir_table.name)
+					for dir_column in os.scandir(f"{search_entry}/{dir_db.name}/{dir_table.name}"):
+						#print(dir_column.name)
+						for dir_object in os.scandir(f"{search_entry}/{dir_db.name}/{dir_table.name}/{dir_column.name}"):
+							if(dir_object.is_file()):
+								if(dir_object.name == object_name):
+									no_result = False
+									#print(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}/{dir_column.name}/{dir_object.name}")
+									return_.append(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}/{dir_column.name}/{dir_object.name}")
+			if(no_result): return 1
+			else: return return_
+
 #example usage 
 if __name__ == "__main__":
 	db = belladonna("~/belladonna/dbs/test")
