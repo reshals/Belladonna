@@ -148,6 +148,23 @@ class belladonna:
 						print(f"{outer_class.db_folder}/{database_name}")
 						return f"{outer_class.db_folder}/{database_name}"
 			if(no_result): return 1
+
+		def table(self, table_name, outer_class):
+			search_entry = f"{outer_class.db_folder}".split("\n")[0]
+			no_result = True
+			return_ = []
+			for dir_db in os.scandir(search_entry):
+				#print(dir_db.name)
+				for dir_table in os.scandir(f"{search_entry}/{dir_db.name}"):
+					#print(dir_table.name)
+					if(dir_table.is_dir()):
+						if(dir_table.name == table_name):
+							no_result = False
+							#print(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}")
+							return_.append(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}")
+			if(no_result): return 1
+			else: return return_
+
 #example usage 
 if __name__ == "__main__":
 	db = belladonna("~/belladonna/dbs/test")
