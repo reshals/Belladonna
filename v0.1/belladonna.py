@@ -136,6 +136,18 @@ class belladonna:
 				for line in object_file.readlines():
 					if data in line:
 						return line
+
+	class search_:
+		def database(self, database_name, outer_class):
+			search_entry = f"{outer_class.db_folder}".split("\n")[0]
+			no_result = True
+			for dir_ in os.scandir(search_entry):
+				if(dir_.is_dir()):
+					if(dir_.name == database_name):
+						no_result = False
+						print(f"{outer_class.db_folder}/{database_name}")
+						return f"{outer_class.db_folder}/{database_name}"
+			if(no_result): return 1
 #example usage 
 if __name__ == "__main__":
 	db = belladonna("~/belladonna/dbs/test")
