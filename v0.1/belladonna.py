@@ -219,5 +219,10 @@ if __name__ == "__main__":
 	db.add.column("test_column", "test_table", "test", db)
 	db.add.object("test_object", "test_column", "test_table", "test", db)
 	db.add.data("super duper cool payload", "test_object", "test_column", "test_table", "test", db)
-	
 	db.read.database("test", db)
+	print(db.search.database("test", db))
+	print(db.search.table("test_table", db))
+	print(db.search.column("test_column", db))
+	print(db.search.object("test_object", db))
+	print(db.search.data("payload", db))
+	print(db.search.data_at("payload", "dbs/test/test_table/test_column/test_object", db))
