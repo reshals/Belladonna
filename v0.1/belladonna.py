@@ -164,14 +164,11 @@ class belladonna:
 			no_result = True
 			return_ = []
 			for dir_db in os.scandir(search_entry):
-				#print(dir_db.name)
 				for dir_table in os.scandir(f"{search_entry}/{dir_db.name}"):
-					#print(dir_table.name)
 					for dir_column in os.scandir(f"{search_entry}/{dir_db.name}/{dir_table.name}"):
 						if(dir_column.is_dir()):
 							if(dir_column.name == column_name):
 								no_result = False
-								#print(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}/{dir_column.name}")
 								return_.append(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}/{dir_column.name}")
 			if(no_result): return 1
 			else: return return_
@@ -181,16 +178,12 @@ class belladonna:
 			no_result = True
 			return_ = []
 			for dir_db in os.scandir(search_entry):
-				#print(dir_db.name)
 				for dir_table in os.scandir(f"{search_entry}/{dir_db.name}"):
-					#print(dir_table.name)
 					for dir_column in os.scandir(f"{search_entry}/{dir_db.name}/{dir_table.name}"):
-						#print(dir_column.name)
 						for dir_object in os.scandir(f"{search_entry}/{dir_db.name}/{dir_table.name}/{dir_column.name}"):
 							if(dir_object.is_file()):
 								if(dir_object.name == object_name):
 									no_result = False
-									#print(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}/{dir_column.name}/{dir_object.name}")
 									return_.append(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}/{dir_column.name}/{dir_object.name}")
 			if(no_result): return 1
 			else: return return_
