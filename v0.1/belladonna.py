@@ -14,9 +14,6 @@ class belladonna:
 		self.db_path = db_path
 		self.db = self.db_path.split("/")[-1]
 		self.add = self.add_()
-		#DEBUG
-		#print(self.db)
-		#print(self.db_path)
 
 	class add_:
 		def database(self, database_name, outer_class):
@@ -154,13 +151,10 @@ class belladonna:
 			no_result = True
 			return_ = []
 			for dir_db in os.scandir(search_entry):
-				#print(dir_db.name)
 				for dir_table in os.scandir(f"{search_entry}/{dir_db.name}"):
-					#print(dir_table.name)
 					if(dir_table.is_dir()):
 						if(dir_table.name == table_name):
 							no_result = False
-							#print(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}")
 							return_.append(f"{outer_class.db_folder}/{dir_db.name}/{dir_table.name}")
 			if(no_result): return 1
 			else: return return_
