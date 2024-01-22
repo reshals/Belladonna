@@ -14,6 +14,7 @@ class belladonna:
 		self.db_path = db_path
 		self.db = self.db_path.split("/")[-1]
 		self.new = self.new_()
+		self.new_at = self.new_at_()
 		self.read = self.read_()
 		self.search = self.search_()
 		self.edit = self.edit_()
@@ -53,6 +54,14 @@ class belladonna:
 			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
 			with open(object_file, 'a+' ) as column_file:
 				column_file.writelines(f"{payload}\n")
+
+	class new_at_:
+		def database(self, database_path, outer_class):
+			database_dir = f"{outer_class.db_folder}/{database_path}"
+			if os.path.exists(database_dir):
+				print("Database exists!")
+			else:
+				os.makedirs(database_dir, exist_ok=bypass_exist)
 
 	class read_:
 		def database(self, database_name, outer_class):
