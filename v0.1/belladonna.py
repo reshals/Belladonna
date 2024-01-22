@@ -13,9 +13,9 @@ class belladonna:
 		self.db_folder = db_folder
 		self.db_path = db_path
 		self.db = self.db_path.split("/")[-1]
-		self.add = self.add_()
+		self.new = self.new_()
 
-	class add_:
+	class new_:
 		def database(self, database_name, outer_class):
 			database_dir = f"{outer_class.db_folder}/{database_name}"
 			if os.path.exists(database_dir):
