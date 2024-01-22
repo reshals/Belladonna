@@ -70,6 +70,13 @@ class belladonna:
 			else:
 				os.makedirs(table_dir, exist_ok=bypass_exist)
 
+		def column(self, column_path, outer_class):
+			column_dir = f"{outer_class.db_folder}/{column_path}"
+			if os.path.exists(column_dir):
+				print("Column exists!")
+			else:
+				os.makedirs(column_dir, exist_ok=bypass_exist)
+
 	class read_:
 		def database(self, database_name, outer_class):
 			print("teste2")
