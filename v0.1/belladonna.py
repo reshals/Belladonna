@@ -243,6 +243,7 @@ class belladonna:
 				print(database_path)
 				os.rename(database_path, f"{outer_class.db_folder}/{new_database_name}")
 				return 0
+				
 		def table(self, new_table_path, table_path, outer_class):
 			new_table_path = f"{outer_class.db_folder}/{new_table_path}"
 			table_path = f"{outer_class.db_folder}/{table_path}"
