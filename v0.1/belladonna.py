@@ -14,6 +14,10 @@ class belladonna:
 		self.db_path = db_path
 		self.db = self.db_path.split("/")[-1]
 		self.new = self.new_()
+		self.read = self.read_()
+		self.search = self.search_()
+		self.edit = self.edit_()
+		self.delete = self.delete_()
 
 	class new_:
 		def database(self, database_name, outer_class):
