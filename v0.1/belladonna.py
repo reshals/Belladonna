@@ -243,6 +243,20 @@ class belladonna:
 				print(database_path)
 				os.rename(database_path, f"{outer_class.db_folder}/{new_database_name}")
 				return 0
+		def table(self, new_table_path, table_path, outer_class):
+			new_table_path = f"{outer_class.db_folder}/{new_table_path}"
+			table_path = f"{outer_class.db_folder}/{table_path}"
+			print(table_path)
+			if not os.path.exists(table_path):
+				print("Table does not exist!")
+				return 1
+			elif os.path.exists(new_table_path):
+				print("Cant rename, name already taken!")
+				return 1
+			else:
+				print(new_table_path)
+				os.rename(table_path, new_table_path)
+				return 0
 
 
 #example usage 
