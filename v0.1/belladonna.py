@@ -232,12 +232,17 @@ class belladonna:
 	class edit_:
 		def database(self, new_database_name, database_name, outer_class):
 			database_path = f"{outer_class.db_folder}/{database_name}"
+			new_database_path = f"{outer_class.db_folder}/{new_database_name}"
 			if not os.path.exists(database_path):
 				print("Database does not exist!")
+				return 1
+			elif os.path.exists(new_database_path):
+				print("Cant rename, name already taken!")
 				return 1
 			else:
 				print(database_path)
 				os.rename(database_path, f"{outer_class.db_folder}/{new_database_name}")
+				return 0
 
 
 #example usage 
