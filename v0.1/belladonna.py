@@ -308,6 +308,21 @@ class belladonna:
 				os.rename(object_path, new_object_path)
 				return 0
 
+		def data(self, value, field, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			found = False
+			with open(object_path, 'r') as object_file:
+				lines = object_file.readlines()
+			with open(object_path, 'w') as object_file:
+				for line in lines:
+					if field in line:
+						found = True
+						object_file.write(f"{field} = {value}\n")
+					else:
+						object_file.write(line)
+			if(found): return 0
+			else: return 1
+
 
 #example usage 
 if __name__ == "__main__":
