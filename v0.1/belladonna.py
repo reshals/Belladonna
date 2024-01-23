@@ -282,6 +282,19 @@ class belladonna:
 				os.rename(table_path, new_table_path)
 				return 0
 
+		def column(self, new_column_path, column_path, outer_class):
+			new_column_path = f"{outer_class.db_folder}/{new_column_path}"
+			column_path = f"{outer_class.db_folder}/{column_path}"
+			if not os.path.exists(column_path):
+				print("Column does not exist!")
+				return 1
+			elif os.path.exists(new_column_path):
+				print("Cant rename, name already taken!")
+				return 1
+			else:
+				os.rename(column_path, new_column_path)
+				return 0
+
 
 #example usage 
 if __name__ == "__main__":
