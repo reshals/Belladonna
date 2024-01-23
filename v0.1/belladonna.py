@@ -79,7 +79,6 @@ class belladonna:
 
 	class read_:
 		def database(self, database_name, outer_class):
-			print("teste2")
 			database_dir = f"{outer_class.db_folder}/{database_name}"
 			if not os.path.exists(database_dir):
 				print("Database does not exist!")
@@ -237,7 +236,6 @@ class belladonna:
 			else: return return_
 
 		def data_at(self, data, object_path, outer_class):
-			#search_entry = f"{outer_class.db_folder}".split("\n")[0]
 			no_result = True
 			return_ = []
 			if(object_path.is_file()):
@@ -245,7 +243,6 @@ class belladonna:
 					for line in object_file.readlines():
 						if data in line:
 							no_result = False
-							#print(line)
 							return_.append(line)
 							print("debug successfull")
 			else: return 1
