@@ -340,6 +340,15 @@ class belladonna:
 				os.system(f"rm -rf {table_path}")
 				return 0
 
+		def column(self, column_path, outer_class):
+			if not os.path.exists(column_path):
+				print("Column not found!")
+				return 1
+			else:
+				sure = input(f"sure to delete the following path? [Y/N] -> {column_path} <- $ ")
+				if(sure == "Y"): os.system(f"rm -rf {column_path}")
+				return 0
+
 
 #example usage 
 if __name__ == "__main__":
