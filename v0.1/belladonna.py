@@ -320,6 +320,16 @@ class belladonna:
 			if(found): return 0
 			else: return 1
 
+	class delete_:
+		def database(self, database_name, outer_class):
+			database_path = f"{outer_class.db_folder}/{database_name}"
+			if not os.path.exists(database_path):
+				print("Database not found!")
+				return 1
+			else:
+				os.system(f"rm -rf {database_path}")
+				return 0
+
 
 #example usage 
 if __name__ == "__main__":
