@@ -330,6 +330,16 @@ class belladonna:
 				os.system(f"rm -rf {database_path}")
 				return 0
 
+		def table(self, table_path, outer_class):
+			print(table_path)
+			if not os.path.exists(table_path):
+				print("Table not found!")
+				return 1
+			else:
+				print("Else condition")
+				os.system(f"rm -rf {table_path}")
+				return 0
+
 
 #example usage 
 if __name__ == "__main__":
