@@ -357,7 +357,6 @@ class belladonna:
 
 		def data(self, field, object_path, outer_class):
 			object_path = f"{outer_class.db_folder}/{object_path}"
-			print(object_path)
 			found = False
 			with open(object_path, 'r') as object_file:
 				lines = object_file.readlines()
