@@ -349,6 +349,15 @@ class belladonna:
 				if(sure == "Y"): os.system(f"rm -rf {column_path}")
 				return 0
 
+		def object(self, object_path, outer_class):
+			if not os.path.exists(object_path):
+				print("Object not found!")
+				return 1
+			else:
+				os.system(f"rm -rf {object_path}")
+				return 0
+
+
 
 #example usage 
 if __name__ == "__main__":
