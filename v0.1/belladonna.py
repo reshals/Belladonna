@@ -359,6 +359,24 @@ class belladonna:
 				os.system(f"rm -rf {object_path}")
 				return 0
 
+		def data(self, field, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			print(object_path)
+			found = False
+			with open(object_path, 'r') as object_file:
+				lines = object_file.readlines()
+			with open(object_path, 'w') as object_file:
+				for line in lines:
+					if (found):
+						object_file.write(line)
+					elif field in line:
+						found = True
+						pass
+					else:
+						object_file.write(line)
+			if(found): return 0
+			else: return 1
+
 
 
 #example usage 
