@@ -331,7 +331,7 @@ class belladonna:
 				return 0
 
 		def table(self, table_path, outer_class):
-			print(table_path)
+			table_path = f"{outer_class.db_folder}/{table_path}"
 			if not os.path.exists(table_path):
 				print("Table not found!")
 				return 1
