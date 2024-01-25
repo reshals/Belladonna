@@ -351,6 +351,7 @@ class belladonna:
 				return 0
 
 		def object(self, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
 			if not os.path.exists(object_path):
 				print("Object not found!")
 				return 1
