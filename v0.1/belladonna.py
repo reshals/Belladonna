@@ -341,6 +341,7 @@ class belladonna:
 				return 0
 
 		def column(self, column_path, outer_class):
+			column_path = f"{outer_class.db_folder}/{column_path}"
 			if not os.path.exists(column_path):
 				print("Column not found!")
 				return 1
