@@ -77,6 +77,15 @@ class belladonna:
 			else:
 				os.makedirs(column_dir, exist_ok=bypass_exist)
 
+		def object(self, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			print(object_path) #Debug further
+			if os.path.exists(object_file):
+				print("Object exists!")
+			else:
+				file_touch = open(object_file, 'x')
+				file_touch.close()
+
 	class read_:
 		def database(self, database_name, outer_class):
 			database_dir = f"{outer_class.db_folder}/{database_name}"
