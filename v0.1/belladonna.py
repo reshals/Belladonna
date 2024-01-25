@@ -85,6 +85,12 @@ class belladonna:
 			else:
 				file_touch = open(object_file, 'x')
 				file_touch.close()
+		def data(self, payload, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			with open(object_file, 'a+' ) as column_file:
+				column_file.writelines(f"{payload}\n")
+
+		
 
 	class read_:
 		def database(self, database_name, outer_class):
