@@ -79,7 +79,6 @@ class belladonna:
 
 		def object(self, object_path, outer_class):
 			object_path = f"{outer_class.db_folder}/{object_path}"
-			print(object_path) #Debug further
 			if os.path.exists(object_file):
 				print("Object exists!")
 			else:
@@ -278,7 +277,6 @@ class belladonna:
 		def table(self, new_table_path, table_path, outer_class):
 			new_table_path = f"{outer_class.db_folder}/{new_table_path}"
 			table_path = f"{outer_class.db_folder}/{table_path}"
-			print(table_path)
 			if not os.path.exists(table_path):
 				print("Table does not exist!")
 				return 1
