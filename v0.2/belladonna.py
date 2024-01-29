@@ -46,3 +46,37 @@ class belladonna:
 			object_path = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
 			with open(object_path, 'a+' ) as object_file:
 				json.dump(json_payload, object_file)
+	class new_at_:
+		def database(self, database_path, outer_class):
+			database_dir = f"{outer_class.db_folder}/{database_path}"
+			if os.path.exists(database_dir):
+				print("Database exists!")
+			else:
+				os.makedirs(database_dir, exist_ok=bypass_exist)
+
+		def table(self, table_path, outer_class):
+			table_dir = f"{outer_class.db_folder}/{table_path}"
+			if os.path.exists(table_dir):
+				print("Table exists!")
+			else:
+				os.makedirs(table_dir, exist_ok=bypass_exist)
+
+		def column(self, column_path, outer_class):
+			column_dir = f"{outer_class.db_folder}/{column_path}"
+			if os.path.exists(column_dir):
+				print("Column exists!")
+			else:
+				os.makedirs(column_dir, exist_ok=bypass_exist)
+				
+		def object(self, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			print(object_path)
+			if os.path.exists(object_file):
+				print("Object exists!")
+			else:
+				file_touch = open(object_file, 'x')
+				file_touch.close()
+		def data(self, json_payload, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
+			with open(object_path, 'a+' ) as object_file:
+				json.dump(json_payload, object_file)
