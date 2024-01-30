@@ -348,3 +348,57 @@ class belladonna:
 						object_file.write(line)
 			if(found): return 0
 			else: return 1
+
+	class delete_:
+		def database(self, database_name, outer_class):
+			database_path = f"{outer_class.db_folder}/{database_name}"
+			if not os.path.exists(database_path):
+				print("Database not found!")
+				return 1
+			else:
+				os.system(f"rm -rf {database_path}")
+				return 0
+
+		def table(self, table_path, outer_class):
+			table_path = f"{outer_class.db_folder}/{table_path}"
+			if not os.path.exists(table_path):
+				print("Table not found!")
+				return 1
+			else:
+				os.system(f"rm -rf {table_path}")
+				return 0
+
+		def column(self, column_path, outer_class):
+			if not os.path.exists(column_path):
+				print("Column not found!")
+				return 1
+			else:
+				sure = input(f"sure to delete the following path? [Y/N] -> {column_path}")
+				if(sure == "Y"): os.system(f"rm -rf {column_path}")
+				return 0
+
+		def object(self, object_path, outer_class):
+			if not os.path.exists(object_path):
+				print("Object not found!")
+				return 1
+			else:
+				os.system(f"rm -rf {object_path}")
+				return 0
+
+		def data(self, field, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			print(object_path)
+			found = False
+			with open(object_path, 'r') as object_file:
+				lines = object_file.readlines()
+			with open(object_path, 'w') as object_file:
+				for line in lines:
+					if (found):
+						object_file.write(line)
+					elif field in line:
+						found = True
+						pass
+					else:
+						object_file.write(line)
+			if(found): return 0
+			else: return 1
