@@ -114,13 +114,15 @@ class belladonna:
 				print(object_)
 
 		def object(self, object_name, column_name, table_name, database_name, outer_class):
-			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
+			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}.json"
 			if not os.path.exists(object_file):
 				print("Object does not exist!")
 				return 1
 			else:
-				with open(object_file, 'r') as object_file:
-					print(object_file.read())
+				print(object_file)
+				with open(object_file) as json_data:
+					data_retrieve = json.load(json_data)
+					return data_retrieve
 
 		def data(self, data, object_name, column_name, table_name, database_name, outer_class):
 			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
