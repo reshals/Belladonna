@@ -274,3 +274,77 @@ class belladonna:
 			else: return 1
 			if(no_result): return 1
 			else: return return_
+
+	class edit_:
+		def database(self, new_database_name, database_name, outer_class):
+			database_path = f"{outer_class.db_folder}/{database_name}"
+			new_database_path = f"{outer_class.db_folder}/{new_database_name}"
+			if not os.path.exists(database_path):
+				print("Database does not exist!")
+				return 1
+			elif os.path.exists(new_database_path):
+				print("Cant rename, name already taken!")
+				return 1
+			else:
+				print(database_path)
+				os.rename(database_path, f"{outer_class.db_folder}/{new_database_name}")
+				return 0
+
+		def table(self, new_table_path, table_path, outer_class):
+			new_table_path = f"{outer_class.db_folder}/{new_table_path}"
+			table_path = f"{outer_class.db_folder}/{table_path}"
+			print(table_path)
+			if not os.path.exists(table_path):
+				print("Table does not exist!")
+				return 1
+			elif os.path.exists(new_table_path):
+				print("Cant rename, name already taken!")
+				return 1
+			else:
+				print(new_table_path)
+				os.rename(table_path, new_table_path)
+				return 0
+
+		def column(self, new_column_path, column_path, outer_class):
+			new_column_path = f"{outer_class.db_folder}/{new_column_path}"
+			column_path = f"{outer_class.db_folder}/{column_path}"
+			if not os.path.exists(column_path):
+				print("Column does not exist!")
+				return 1
+			elif os.path.exists(new_column_path):
+				print("Cant rename, name already taken!")
+				return 1
+			else:
+				os.rename(column_path, new_column_path)
+				return 0
+
+
+		def object(self, new_object_path, object_path, outer_class):
+			new_object_path = f"{outer_class.db_folder}/{new_object_path}"
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			print(new_object_path)
+			print(object_path)
+			if not os.path.exists(object_path):
+				print("Object does not exist!")
+				return 1
+			elif os.path.exists(new_object_path):
+				print("Cant rename, name already taken!")
+				return 1
+			else:
+				os.rename(object_path, new_object_path)
+				return 0
+
+		def data(self, value, field, object_path, outer_class):
+			object_path = f"{outer_class.db_folder}/{object_path}"
+			found = False
+			with open(object_path, 'r') as object_file:
+				lines = object_file.readlines()
+			with open(object_path, 'w') as object_file:
+				for line in lines:
+					if field in line:
+						found = True
+						object_file.write(f"{field} = {value}\n")
+					else:
+						object_file.write(line)
+			if(found): return 0
+			else: return 1
