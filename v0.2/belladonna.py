@@ -128,3 +128,47 @@ class belladonna:
 				for line in object_file.readlines():
 					if data in line:
 						print(line)
+
+	class retrieve_:
+		def database(self, database_name, outer_class):
+			database_dir = f"{outer_class.db_folder}/{database_name}"
+			if not os.path.exists(database_dir):
+				print("Database does not exist!")
+				return 1
+			else:
+				tables = os.listdir(database_dir)
+			return tables
+
+		def table(self, table_name, database_name, outer_class):
+			table_dir = f"{outer_class.db_folder}/{database_name}/{table_name}"
+			if not os.path.exists(table_dir):
+				print("Table does not exist!")
+				return 1
+			else:
+				columns = os.listdir(table_dir)
+			return columns
+
+		def column(self, column_name, table_name, database_name, outer_class):
+			column_dir = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}"
+			if not os.path.exists(column_dir):
+				print("Column does not exist!")
+				return 1
+			else:
+				objects = os.listdir(column_dir)
+			return objects
+
+		def object(self, object_name, column_name, table_name, database_name, outer_class):
+			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
+			if not os.path.exists(object_file):
+				print("Object does not exist!")
+				return 1
+			else:
+				with open(object_file, 'r') as object_file:
+					return object_file.read()
+
+		def data(self, data, object_name, column_name, table_name, database_name, outer_class):
+			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
+			with open(object_file, 'r') as object_file:
+				for line in object_file.readlines():
+					if data in line:
+						return line
