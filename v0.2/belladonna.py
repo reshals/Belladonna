@@ -120,9 +120,13 @@ class belladonna:
 				return 1
 			else:
 				print(object_file)
-				with open(object_file) as json_data:
-					data_retrieve = json.load(json_data)
-					return data_retrieve
+				try:
+					with open(object_file) as json_data:
+						data_retrieve = json.load(json_data)
+						return data_retrieve
+				except json.JSONDecodeError as e:
+					print(f"Error decoding JSON: {e}")
+					return None
 
 		def data(self, data, object_name, column_name, table_name, database_name, outer_class):
 			object_file = f"{outer_class.db_folder}/{database_name}/{table_name}/{column_name}/{object_name}"
